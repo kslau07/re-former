@@ -1,25 +1,31 @@
-<%# undefined method `save' for nil:NilClass %>
-<%# use a default email to save time, can we use a default password too? %>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<%= render 'errors' %>
 
 <%= form_with model: @user do |form| %>
 	<ul>
 		<li>
-			<%= form.label :username %>
-			<%= form.text_field :username %>
+			<%= form.label :username, 'Username:' %>
+			<%= form.text_field :username, value: 'default text here', placeholder: 'placeholder-text' %>
 		</li>
 		<li>
-			<%= form.label :email %>
-			<%= form.text_field :email %>
+			<%= form.label :email, 'Email:' %>
+			<%= form.email_field :email, value: 'joe@example.com', placeholder: 'joe@example.com' %>
 		</li>
 		<li>
-			<%= form.label :password %>
-			<%= form.text_field :password %>
+			<%= form.label :password, 'Password:' %>
+			<%= form.password_field :password %>
 		</li>
 		<li>
 			<%= form.submit %>
 		</li>
 	</ul>
 <% end %>
+
 
 <%
 =begin %>
