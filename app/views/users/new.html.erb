@@ -1,18 +1,79 @@
-<form action='/users' accept-charset="utf-8" method='post'>
-	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<%# undefined method `save' for nil:NilClass %>
+<%# use a default email to save time, can we use a default password too? %>
+
+<%= form_with model: @user do |form| %>
 	<ul>
 		<li>
-			<label for='user'>Username:</label>
-			<input type='text' id='user' name='user[username]'>
+			<%= form.label :username %>
+			<%= form.text_field :username %>
 		</li>
 		<li>
-			<label for='user'>Email:</label>
-			<input type='email' id='user' name='user[email]'>
+			<%= form.label :email %>
+			<%= form.text_field :email %>
 		</li>
 		<li>
-			<label for='user'>Password:</label>
-			<input type='password' id='user' name='user[password]'>
+			<%= form.label :password %>
+			<%= form.text_field :password %>
 		</li>
-		<li><button type='submit'>Submit</button></li>
+		<li>
+			<%= form.submit %>
+		</li>
 	</ul>
-</form>
+<% end %>
+
+<%
+=begin %>
+
+	<%# Using Rails *_tag helpers to build form %>
+
+	<%# This helper is only slightly useful %>
+
+	<%= form_tag('/users', method: :post) do %>
+		<ul>
+			<div>
+				<%= label_tag 'Username:' %>
+				<%= text_field_tag 'username' %>
+			</div>
+			<div>
+				<%= label_tag 'Email:' %>
+				<%= text_field_tag 'email' %>
+			</div>
+			<div>
+				<%= label_tag 'Password:' %>
+				<%= text_field_tag 'password' %>
+			</div>
+			<div><%= submit_tag 'Create User' %></div>
+		</ul>
+	
+<% end %>
+
+<%
+=end %>
+
+<%
+=begin %>
+
+	<%# Old-fashioned HTML form %>
+
+	<form action='/users' accept-charset="utf-8" method='post'>
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+		<ul>
+			<li>
+				<label for='user'>Username:</label>
+				<input type='text' id='user' name='user[username]'>
+			</li>
+			<li>
+				<label for='user'>Email:</label>
+				<input type='email' id='user' name='user[email]'>
+			</li>
+			<li>
+				<label for='user'>Password:</label>
+				<input type='password' id='user' name='user[password]'>
+			</li>
+			<li><button type='submit'>Submit</button></li>
+		</ul>
+	</form>
+
+<%
+=end %>
+
