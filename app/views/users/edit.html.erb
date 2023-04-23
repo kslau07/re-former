@@ -1,21 +1,22 @@
 <%= render 'errors' %>
 
-<%= form_with url: user_path(@user), model: @user, method: :patch do |form| %>
+<h2>Edit user:</h2>
+
+<%= form_with url: user_path, model: @user, method: :patch do |form| %>
 	<ul>
 		<li>
 			<%= form.label :username, 'Username:' %>
-			<%= form.text_field :username, value: 'default text here', placeholder: 'placeholder-text' %>
+			<%= form.text_field :username %>
 		</li>
 		<li>
 			<%= form.label :email, 'Email:' %>
-			<%= form.email_field :email, value: 'joe@example.com', placeholder: 'joe@example.com' %>
+			<%= form.email_field :email %>
 		</li>
 		<li>
 			<%= form.label :password, 'Password:' %>
 			<%= form.password_field :password %>
 		</li>
-		<li>
-			<%= form.submit %>
-		</li>
+		<%= form.submit %>
 	</ul>
 <% end %>
+

@@ -1,4 +1,4 @@
-test commit
+
 
 Rails console shows **422 Unprocessable Entity** when we submit a form that has not been permitted yet (must use strong parameters).
 
@@ -33,3 +33,15 @@ Input field values:
 In the method for users#create use:
 
 	if @user.update(user_params)
+
+***
+
+On rewriting form_with form elements:
+
+Remember: model: @user **is singular**
+
+Remember: method: :patch **for update**
+
+Remember: text_field, email_field, password_field
+
+Learned: retrieved edit fields are overridden by defaults from placeholder and/or value, it seems difficult to refactor a partial out if we want to use placeholder/value.

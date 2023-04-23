@@ -1,3 +1,12 @@
-<% @user.errors.full_messages.each do |message| %>
-	<div><%= message %></div>
+<% if @user.errors.any? %>
+	<div id="error_explanation" style="color:red;">
+		<h3><%= pluralize(@user.errors.count, 'error') %> prohibited this article from being saved:</h3>
+
+		<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	
 <% end %>
