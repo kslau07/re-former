@@ -1,3 +1,5 @@
+test commit
+
 Rails console shows **422 Unprocessable Entity** when we submit a form that has not been permitted yet (must use strong parameters).
 
 next terminal window: Ctrl + PgDn
