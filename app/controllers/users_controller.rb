@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-
       flash[:notice] = 'A new user was created!'
       redirect_to new_user_path
     else
@@ -23,6 +22,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
+      flash[:notice] = 'User was updated!'
       redirect_to edit_user_path
     else
       render :edit, status: :unprocessable_entity
